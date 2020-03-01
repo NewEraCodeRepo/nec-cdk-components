@@ -1,0 +1,40 @@
+{
+  "packages": [
+    "ci/*",
+    "lambdas/**",
+    "packages/*"
+  ],
+  "version": "1.8.3",
+  "npmClient": "npm",
+  "command": {
+    "version": {
+      "conventionalCommits": true,
+      "exact": true,
+      "message": "chore(release): %s",
+      "allowBranch": [
+        "master",
+        "develop",
+        "*/*/feature"
+      ],
+      "ignoreChanges": [
+        "ci/**"
+      ]
+    },
+    "publish": {
+      "allowBranch": [
+        "master",
+        "develop",
+        "*/*/feature"
+      ],
+      "ignoreChanges": [
+        "ci/**"
+      ]
+    },
+    "bootstrap": {
+      "ignore": "component-*",
+      "npmClientArgs": [
+        "--no-package-lock"
+      ]
+    }
+  }
+}

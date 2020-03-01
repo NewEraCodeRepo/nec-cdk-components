@@ -1,0 +1,63 @@
+#!/usr/bin/env bash
+
+# Debug Mode
+DEBUGMODE="0"
+
+#########################################
+# Script for destroying deployed stacks #
+#########################################
+
+# This script requires the AWS CLI and jq
+
+# Exit if any command fails
+set -e
+
+# export account and stack info
+source ./scripts/support/variables
+
+# utilities
+source ./scripts/support/utilities
+
+SCRIPTS_DIR=$(pwd)/scripts/aws
+
+function destroy_stack {
+    echo
+    echo "==> Destroying $STACK in $AWS_PROFILE environment"
+    cd ci/build-components
+    npx cdk destroy -c account=$ACCOUNT -c region=$REGION $STACK
+    cd -
+}
+
+function destroy_toolkit {
+    profile=$(aws configure list | awk '/profile/ {print $2}')
+    echo
+    echo "==> Destroying Toolkit in development / sandbox environment"
+    toolkitbucket=$(aws cloudformation describe-stack-resource --stack-name CDKToolkit --logical-resource-id StagingBucket --profile $profile | jq '.StackResourceDetail | .PhysicalResourceId' -j)
+	if [[ $DEBUGMODE = "1" ]]; then
+		echo "$toolkitbucket"
+	fi
+	if echo "$toolkitbucket" | egrep -iq "error|not|false"; then
+		echo "$toolkitbucket"
+		fail "No Toolkit S3 bucket found."
+    fi
+
+    aws s3 rb s3://$toolkitbucket --force --profile $profile
+    aws cloudformation delete-stack --stack-name CDKToolkit --profile $profile
+}
+
+## execute destroy
+function destroy {
+    case $1 in
+        --stack)
+            destroy_stack
+            ;;
+        --toolkit)
+            destroy_toolkit
+            ;;
+        *) echo "please choose an option, Ie: npm run destroy:cog"
+        exit 1
+        ;;
+    esac
+}
+
+destroy $1

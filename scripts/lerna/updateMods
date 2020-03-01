@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+########################################
+# Script for updating npm mods in root #
+# and all packages                     #
+########################################
+# Debug Mode
+DEBUGMODE="0"
+
+# Exit if any command fails
+set -e
+
+echo Updating mods from $(pwd)
+echo
+
+ncu -u
+npm i

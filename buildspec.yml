@@ -1,0 +1,44 @@
+version: 0.2
+phases:
+  install:
+    commands:
+      # update npm
+      - npm install npm@latest -g
+      # npm configuration
+      # here i configure npm to set the cache at /root/.npm
+      - npm config -g set prefer-offline true
+      - npm config -g set cache /root/.npm
+      - npm config get cache
+      - cd ${CODEBUILD_SRC_DIR}
+      - npm install --no-package-lock
+
+  pre_build:
+    commands:
+      # Clean entire monorepo and install dependent packages
+      - ./node_modules/.bin/lerna bootstrap --hoist --concurrency 4
+
+  build:
+    commands:
+      # Build everything
+      - ./node_modules/.bin/lerna run tsc --concurrency 4
+
+  post_build:
+    commands:
+      # execute all the tests
+      - npm run test:ci
+      # create .npmrc files
+      - npm run write:npmrc
+      # create lambda packages
+      - npm run pack:lambdas
+      # publish to npm
+      - ./node_modules/.bin/lerna publish from-package --yes --git-head ${CODEBUILD_RESOLVED_SOURCE_VERSION} --concurrency 4
+
+artifacts:
+  files:
+    - '**/*'
+
+# At this step, we instruct codebuild to cache all items that in the NPM Cache
+# that we configured earlier
+cache:
+  paths:
+    - /root/.npm/**/*

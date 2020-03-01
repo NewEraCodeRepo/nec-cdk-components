@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+
+#########################
+# Script for Deployment #
+#########################
+
+# Exit if any command fails
+set -e
+
+# export account and stack info
+source ./scripts/support/variables
+
+# utilities
+source $(pwd)/scripts/support/utilities
+
+## execute deploy
+case $AWS_PROFILE in
+    sandbox)
+        feature_branch
+        ;;
+    develop)
+        export GITHUB_BRANCH=develop
+        ;;
+    production)
+        export GITHUB_BRANCH=master
+        ;;
+    *) echo "$AWS_PROFILE is not a valid profile"
+       cat << EOF
+Please see README documentation on AWS configuration
+
+Valid profiles are:
+- sandbox
+- develop
+- production
+EOF
+    ;;
+esac
+
+echo
+echo "==> Deploying $STACK to the $AWS_PROFILE environment in the $REGION region"
+cd ci/build-components
+npx cdk deploy -c account=$ACCOUNT -c region=$REGION $STACK --require-approval any-change
+cd -

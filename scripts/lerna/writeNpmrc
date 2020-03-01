@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+# Debug Mode
+DEBUGMODE="0"
+
+# Exit if any command fails
+set -e
+# Creating an .npmrc that references an envvar is what you're supposed to do.
+# https://docs.npmjs.com/private-modules/ci-server-config
+echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}' > .npmrc

@@ -1,0 +1,63 @@
+#!/usr/bin/env bash
+
+###################
+# Setup for setup #
+###################
+
+# Exit if any command fails
+set -e
+
+# export account info
+source ./scripts/support/variables
+
+# utilities
+source ./scripts/support/utilities
+
+SCRIPTS_DIR=$(pwd)/scripts
+AWS_SCRIPTS_DIR=$SCRIPTS_DIR/aws
+CONFIG_FILE=$(pwd)/scripts/config.js
+
+# fail function
+function fail {
+  echo
+  echo "==> $1"
+  exit 1
+}
+
+## build config
+function build_config {
+    if [ -f "$CONFIG_FILE" ]; then 
+        echo
+        echo "==> Cleaning config"
+        rm $CONFIG_FILE
+    fi
+
+    echo
+    echo "==> Compiling config"
+    tsc scripts/config.ts
+}
+
+## run aws sdk scripts:
+## - put github and npm token in secretsmnager
+## - import github token to codebuild
+function run_aws_scripts {
+    node $AWS_SCRIPTS_DIR/index.js
+}
+
+## execute setup
+function setup {
+    echo
+    echo "==> Building Config"
+    build_config
+    run_aws_scripts
+}
+
+setup
+
+cat <<FOOTER
+==> You're all set up!
+
+    To build, run:
+
+    npm run build
+FOOTER

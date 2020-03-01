@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+########################################
+# Script for creating a zip archive to #
+# package lambda with npm module       #
+# dependancies.                        #
+########################################
+
+# Exit if any command fails
+set -e
+
+COMPONENT_DIR=$2
+COMPONENT_LAMBDA_PACKAGE_DIR=$2/lambda_packages
+
+# remove any old packages
+if [[ -d "$COMPONENT_LAMBDA_PACKAGE_DIR" ]]; then 
+    echo
+    echo "==> Deleting existing component lambda package directory $COMPONENT_LAMBDA_PACKAGE_DIR"
+    rm -rf $COMPONENT_LAMBDA_PACKAGE_DIR
+fi
+
+mkdir $COMPONENT_LAMBDA_PACKAGE_DIR
+
+npm install --no-package-lock --silent
+# this line below is very verbose but nescessary for any issues with node-gyp
+# https://github.com/grpc/grpc/issues/6443
+# I can't get it to be silent
+npm rebuild --target=10.0.0 --target_platform=linux --target_arch=x64 --target_libc=glibc --silent
+rm -rf *.zip
+zip -q -r package.zip index.js node_modules
+mv package.zip $COMPONENT_LAMBDA_PACKAGE_DIR/package.zip
+rm -rf package.zip

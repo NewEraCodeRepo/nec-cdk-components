@@ -1,0 +1,17 @@
+#!/bin/sh
+
+############################
+# Script for bootstrapping #
+############################
+
+# Exit if any command fails
+set -e
+
+# export account info
+source ./scripts/support/variables
+
+echo
+echo "==> Bootstrapping in $AWS_PROFILE environment in the $REGION region"
+cd ci/build-components
+cdk bootstrap aws://$ACCOUNT/$REGION
+cd -

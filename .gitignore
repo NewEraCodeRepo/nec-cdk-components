@@ -1,0 +1,9 @@
+node_modules/
+lerna-debug.log
+npm-debug.log
+packages/*/lib
+# regular cdk app for ci
+.idea
+.vscode
+.npmrc
+.env

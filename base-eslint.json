@@ -1,0 +1,28 @@
+{
+  "extends": ["eslint:recommended", "plugin:jest/recommended", "plugin:node/recommended"],
+  "plugins": ["node", "import", "jest"],
+  "env": {
+    "node": true,
+    "es6": true,
+    "jest/globals": true
+  },
+  "rules": {
+    "node/no-unpublished-require": 0,
+    "node/no-missing-require": 0,
+    "import/no-unresolved": 0,
+    "global-require": 0,
+    "no-console": 0,
+    "no-case-declarations": 0
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".json"]
+      }
+    }
+  },
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaVersion": 2017
+  }
+}

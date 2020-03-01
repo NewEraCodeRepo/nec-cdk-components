@@ -1,0 +1,56 @@
+{
+  "name": "root",
+  "private": true,
+  "scripts": {
+    "setup": "./scripts/setup",
+    "build": "lerna bootstrap --hoist && lerna run tsc",
+    "test:ci": "npm run pack:lambdas && npm run test:unit:ci && npm run tslint:ci",
+    "test": "npm run pack:lambdas && npm run test:unit:all && npm run tslint:all && npm run eslint",
+    "test:unit:all": "npm run test:unit && npm run test:unit:ci && npm run test:unit:lambdas",
+    "test:unit": "./node_modules/.bin/jest --verbose  --projects ./ci/*",
+    "test:unit:ci": "./node_modules/.bin/jest --verbose --projects ./packages/*",
+    "test:unit:lambdas": "./node_modules/.bin/jest \"^.*/lambda_packages/__tests__/.*.test.js$\" --verbose --projects ./lambdas/*",
+    "publish": "lerna publish",
+    "tslint:ci:fix": "./node_modules/.bin/tslint -c base-tslint-ci.json --project base-tsconfig-ci.json --fix",
+    "tslint:ci": "./node_modules/.bin/tslint -c base-tslint-ci.json --project base-tsconfig-ci.json",
+    "tslint": "./node_modules/.bin/tslint -c base-tslint.json --project base-tsconfig.json -t stylish",
+    "tslint:fix": "./node_modules/.bin/tslint -c base-tslint.json --project base-tsconfig.json -t stylish --fix",
+    "tslint:all": "npm run tslint:ci && npm run tslint",
+    "eslint": "./node_modules/.bin/eslint --no-eslintrc --config ./base-eslint.json lambdas/**/*.js",
+    "eslint:fix": "./node_modules/.bin/eslint --no-eslintrc --config ./base-eslint.json lambdas/**/*.js --fix",
+    "ls": "lerna-script",
+    "update": "npm run ls updateNpmMods",
+    "write:npmrc": "npm run ls writeNpmrc",
+    "pack:lambdas": "npm run ls packageLambda",
+    "bootstrap": "./scripts/cdk/bootstrap",
+    "deploy": "./scripts/cdk/deploy",
+    "destroy:stack": "./scripts/cdk/destroy --stack",
+    "destroy:toolkit": "./scripts/cdk/destroy --toolkit"
+  },
+  "husky": {
+    "hooks": {
+      "pre-push": "lerna version --yes --amend --no-commit-hooks && git gc --prune=now",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^8.3.4",
+    "@commitlint/config-conventional": "^8.3.4",
+    "@types/dotenv": "^8.2.0",
+    "@types/node": "^13.1.6",
+    "dotenv": "^8.2.0",
+    "execa": "^4.0.0",
+    "husky": "^4.0.6",
+    "jest": "^24.9.0",
+    "jsonfile": "^5.0.0",
+    "lerna": "^3.20.2",
+    "lerna-script": "^1.1.1",
+    "lerna-script-tasks-dependencies": "^1.1.1",
+    "typescript": "^3.7.4"
+  }
+}

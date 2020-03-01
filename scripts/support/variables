@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+# export account info
+export REGION=$(aws configure get region --profile $AWS_PROFILE)
+export ACCOUNT=$(aws sts get-caller-identity | jq '.Account' -j)
+
+# stack
+export STACK="BuildComponentsStack"
+
+for VAR in AWS_PROFILE REGION ACCOUNT STACK; do
+    if [[ -z "${!VAR}" ]]; then
+        tput setaf 1; echo "$VAR not set. See README about setting $VAR environment variable" && tput sgr0
+        exit 1
+    else
+        echo "$VAR is ${!VAR}"
+    fi
+done

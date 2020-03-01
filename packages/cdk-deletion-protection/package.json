@@ -1,0 +1,55 @@
+{
+  "name": "@NewEraCode/cdk-deletion-protection",
+  "version": "1.8.3",
+  "description": "An AWS CDK construct that protects infrastructure from deletion",
+  "author": "Julia Jacobs <jjacobs2000@me.com>",
+  "homepage": "https://github.com/NewEraCodeRepo/nec-cdk-components#readme",
+  "license": "MIT",
+  "main": "lib/cdk-deletion-protection.js",
+  "publishConfig": {
+    "access": "restricted"
+  },
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NewEraCodeRepo/nec-cdk-components.git"
+  },
+  "scripts": {
+    "tsc": "tsc",
+    "watch": "tsc -w",
+    "cdk": "cdk",
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/NewEraCodeRepo/nec-cdk-components/issues"
+  },
+  "devDependencies": {
+    "@aws-cdk/assert": "^1.20.0",
+    "@babel/cli": "^7.7.7",
+    "@babel/core": "^7.7.7",
+    "@babel/preset-env": "^7.7.7",
+    "@babel/preset-typescript": "^7.7.7",
+    "@types/jest": "^24.0.25",
+    "@types/node": "^13.1.6",
+    "aws-cdk": "^1.20.0",
+    "babel-core": "7.0.0-bridge.0",
+    "jest-cdk-snapshot": "^1.2.0",
+    "mock-fs": "^4.10.4",
+    "ts-jest": "^24.3.0",
+    "ts-node": "^8.6.1",
+    "tslint": "^5.20.1",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^3.7.4"
+  },
+  "dependencies": {
+    "@aws-cdk/core": "^1.20.0",
+    "@aws-cdk/custom-resources": "^1.20.0",
+    "source-map-support": "^0.5.16"
+  }
+}

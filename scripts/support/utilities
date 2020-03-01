@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+
+# Fail
+function fail {
+	tput setaf 1; echo "Failure: $*" && tput sgr0
+	exit 1
+}
+
+# Check Command
+function check_command {
+	type -P $1 &>/dev/null || fail "Unable to find $1, please install it and run this script again."
+}
+
+# Sets the GITHUB_BRANCH environment variable to the checkout branch name
+# Junio C Hamano's "Checking the current branch programatically" explains in more detail:
+# https://git-blame.blogspot.com/2013/06/checking-current-branch-programatically.html
+function feature_branch {
+    echo
+    echo "==> Unsetting GITHUB_BRANCH variable"
+    unset GITHUB_BRANCH
+    export GITHUB_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+    echo
+    echo "==> Setting GITHUB_BRANCH to $GITHUB_BRANCH"
+}
+
+# Verify AWS CLI Credentials are setup
+# http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html
+function verifyAWSCreds {
+    if ! grep -q aws_access_key_id ~/.aws/config; then
+        if ! grep -q aws_access_key_id ~/.aws/credentials; then
+            fail "AWS config not found or CLI not installed. Please run \"aws configure\"."
+        fi
+    fi
+}
