@@ -15,19 +15,19 @@ $ npm i @NewEraCode/cdk-deletion-protection
 
 **NodeJS**
 ```javascript
-const cdp = require('@NewEraCode/cdk-deletion-protection');
+const cdp = require('@neweracode/cdk-deletion-protection');
 const deletionProtection = new cdp.CDKDeletionProtection(....)
 ```
 **TypeScript / Babel**
 ```typescript
-import { CDKDeletionProtection } from '@NewEraCode/cdk-deletion-protection';
+import { CDKDeletionProtection } from '@neweracode/cdk-deletion-protection';
 ```
 
 Example:
 
 ```typescript
 import { UserPool, CfnUserPool } from '@aws-cdk/aws-cognito';
-import { CDKDeletionProtection } from '@NewEraCode/cdk-deletion-protection';
+import { CDKDeletionProtection } from '@neweracode/cdk-deletion-protection';
 
 const deletionProtection = new CDKDeletionProtection(this, 'ProtectionPolicies', {
     resourceDeletionPolicy: "RETAIN",

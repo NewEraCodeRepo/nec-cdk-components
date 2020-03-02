@@ -9,23 +9,23 @@ An [AWS CDK](https://docs.aws.amazon.com/cdk/latest/guide/home.html) construct.
 ### Install
 
 ```shell
-$ npm i @NewEraCode/cdk-<component-name>
+$ npm i @neweracode/cdk-<component-name>
 ```
 ### Import
 
 **NodeJS**
 ```javascript
-const component = require('@NewEraCode/cdk-<component-name>');
+const component = require('@neweracode/cdk-<component-name>');
 ```
 **TypeScript / Babel**
 ```typescript
-import { Component } from '@NewEraCode/cdk-<component-name>';
+import { Component } from '@neweracode/cdk-<component-name>';
 ```
 
 Example:
 
 ```typescript
-import { Component } from '@NewEraCode/cdk-<component-name>';
+import { Component } from '@neweracode/cdk-<component-name>';
 
 // add exmaple of how to use component
 ```

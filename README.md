@@ -84,12 +84,12 @@ $ npm run update
 1. Run the following commands:
 
 ```bash
-$ lerna create @NewEraCode/cdk-<name-of-package> packages
+$ lerna create @neweracode/cdk-<name-of-package> packages
 ```
 for example:
 
 ```bash
-$ lerna create @NewEraCode/cdk-deletion-protection packages
+$ lerna create @neweracode/cdk-deletion-protection packages
 ```
 
 1. Answer questions. Look at the package.json files in the other modules for sample information.

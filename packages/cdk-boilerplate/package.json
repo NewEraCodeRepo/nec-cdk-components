@@ -1,12 +1,12 @@
 {
-  "name": "@NewEraCode/cdk-boilerplate",
+  "name": "@neweracode/cdk-boilerplate",
   "version": "1.8.2",
   "private": true,
   "description": "An AWS CDK construct",
   "author": "Your Name <you0@email.com>",
   "homepage": "https://github.com/NewEraCodeRepo/nec-cdk-components#readme",
   "license": "MIT",
-  "main": "lib/cdk-cdk-boilerplate.js",
+  "main": "lib/cdk-boilerplate.js",
   "publishConfig": {
     "access": "restricted"
   },

@@ -24,6 +24,15 @@ case $AWS_PROFILE in
     production)
         export GITHUB_BRANCH=master
         ;;
+    autoawsume-admin)
+        export GITHUB_BRANCH=master
+        ;;
+    autoawsume-prod-admin)
+        export GITHUB_BRANCH=master
+        ;;
+    autoawsume-dev-admin)
+        export GITHUB_BRANCH=develop
+        ;;
     *) echo "$AWS_PROFILE is not a valid profile"
        cat << EOF
 Please see README documentation on AWS configuration
@@ -32,6 +41,9 @@ Valid profiles are:
 - sandbox
 - develop
 - production
+- autoawsume-admin
+- autoawsume-prod-admin
+- autoawsume-dev-admin
 EOF
     ;;
 esac

@@ -15,18 +15,18 @@ with the certificate ARN stored in an SSM Parameter.
 ### Install
 
 ```bash
-npm i @NewEraCode/cdk-static-website
+npm i @neweracode/cdk-static-website
 ```
 ### Import
 
 **NodeJS**
 ```javascript
-const cds = require('@NewEraCode/cdk-static-site');
+const cds = require('@neweracode/cdk-static-site');
 new cds.CdkStaticSite(....)
 ```
 **TypeScript / Babel**
 ```typescript
-import { CdkStaticSite } from '@NewEraCode/cdk-static-site';
+import { CdkStaticSite } from '@neweracode/cdk-static-site';
 ```
 
 Example:

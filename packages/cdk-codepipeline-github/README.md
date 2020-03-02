@@ -26,18 +26,18 @@ aws codebuild import-source-credentials --server-type GITHUB --auth-type PERSONA
 ### Install
 
 ```bash
-$ npm i @NewEraCode/cdk-codepipeline-github
+$ npm i @neweracode/cdk-codepipeline-github
 ```
 ### Import
 
 **NodeJS**
 ```javascript
-const ccg = require('@NewEraCode/cdk-codepipeline-github');
+const ccg = require('@neweracode/cdk-codepipeline-github');
 new ccg.CdkCodepipelineGithub(.....)
 ```
 **TypeScript / Babel**
 ```typescript
-import { CdkCodepipelineGithub } from '@NewEraCode/cdk-codepipeline-github';
+import { CdkCodepipelineGithub } from '@neweracode/cdk-codepipeline-github';
 ```
 
 ### Example
@@ -45,7 +45,7 @@ import { CdkCodepipelineGithub } from '@NewEraCode/cdk-codepipeline-github';
 // One possible way to get an existing secret's arn - using AwsCustomResource
 // and AWS SecretsManager SDK
 import { AwsCustomResource } from '@aws-cdk/custom-resources';
-import { CdkCodepipelineGithub } from '@NewEraCode/cdk-codepipeline-github';
+import { CdkCodepipelineGithub } from '@neweracode/cdk-codepipeline-github';
 import { Pipeline } = require('@aws-cdk/aws-codepipeline');
 
 const getGithubSecret = new AwsCustomResource(this, 'GetGithubSecret', {

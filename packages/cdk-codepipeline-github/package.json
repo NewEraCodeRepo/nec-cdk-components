@@ -1,5 +1,5 @@
 {
-  "name": "@NewEraCode/cdk-codepipeline-github",
+  "name": "@neweracode/cdk-codepipeline-github",
   "version": "1.8.2",
   "description": "An AWS CDK construct that sends codbuild and codepipeline status events to github",
   "author": "Julia Jacobs <jjacobs2000@me.com>",

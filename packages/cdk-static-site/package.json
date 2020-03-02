@@ -1,5 +1,5 @@
 {
-  "name": "@NewEraCode/cdk-static-site",
+  "name": "@neweracode/cdk-static-site",
   "version": "1.8.3",
   "description": "An AWS CDK construct that creates static site infrastructure",
   "author": "Julia Jacobs <jjacobs2000@me.com>",
