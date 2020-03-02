@@ -19,7 +19,7 @@ async function createGitTokenSecret() {
   const secret = await client
     .createSecret({
       Name: secretName,
-      Description: 'Github Token for HeyKind Org',
+      Description: 'Github Token for New Era Code Org',
       SecretString: githubToken,
     })
     .promise();

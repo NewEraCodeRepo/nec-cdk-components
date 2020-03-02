@@ -1,6 +1,6 @@
 # New Era Code CDK Components and Modules
 
-<!-- ![Build Status](https://codebuild.us-east-2.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoiVlo4VDRoMmNvZzJ4NkliN3ZaN3J6YlBrKzJMdzNQalljTG9qNGZRODd1dmxMN0E0cEtJMU1vU254cCtHZXlGWnkvZERnQTRxd0FYTkE0NGlwcEZITW4wPSIsIml2UGFyYW1ldGVyU3BlYyI6IlNLTTFpRVhaazd4TGJiL28iLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=master) -->
+![Build Status](https://codebuild.us-east-1.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoiOGhNTlZlL2lCMk1WRUdVdmR3MEU3R0ExZTBqemFYR2VNcTcyZ2xqZUFtVEtwelRsRTBWTytGZkVZOTBCQURnTmdPSjRCK2tlWlF6UjlDeEsza0VOeGowPSIsIml2UGFyYW1ldGVyU3BlYyI6IjNwMVh6ZmtET2FjeFNieXEiLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=master)
 
 | name                                                                  | description                                             |
 | --------------------------------------------------------------------- | ------------------------------------------------------- |
