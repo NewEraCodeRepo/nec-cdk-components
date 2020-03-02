@@ -44,7 +44,7 @@ describe('Codepipeline Github Handler', () => {
     console.log = origLog;
   });
 
-  it('If request type is create, will produce a pending status update', async () => {
+  it('If request type is create, will produce a pending status update', () => {
     const request = nock(ResponseURL)
       .put('/', body => body.Status === 'SUCCESS')
       .reply(200);
@@ -72,7 +72,7 @@ describe('Codepipeline Github Handler', () => {
       });
   });
 
-  it('if request type is update and event state is success, will produce a successful status update', async () => {
+  it('if request type is update and event state is success, will produce a successful status update', () => {
     const request = nock(ResponseURL)
       .put('/', body => body.Status === 'SUCCESS')
       .reply(200);
@@ -100,7 +100,7 @@ describe('Codepipeline Github Handler', () => {
       });
   });
 
-  it('if request type is update and event state is failure, will produce a failure status update', async () => {
+  it('if request type is update and event state is failure, will produce a failure status update', () => {
     const request = nock(ResponseURL)
       .put('/', body => body.Status === 'SUCCESS')
       .reply(200);
@@ -128,7 +128,7 @@ describe('Codepipeline Github Handler', () => {
       });
   });
 
-  it('Fails if the event payload is empty', async () => {
+  it('Fails if the event payload is empty', () => {
     const request = nock(ResponseURL)
       .put('/', body => body.Status === 'FAILED' && body.Reason === 'Unsupported request type undefined')
       .reply(200);
@@ -139,7 +139,7 @@ describe('Codepipeline Github Handler', () => {
       });
   });
 
-  it('Fails if the request type is invalid', async () => {
+  it('Fails if the request type is invalid', () => {
     const invalidType = 'invalid';
     const request = nock(ResponseURL)
       .put('/', body => body.Status === 'FAILED' && body.Reason === `Unsupported request type ${invalidType}`)
