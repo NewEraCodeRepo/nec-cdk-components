@@ -1,6 +1,6 @@
 {
   "name": "@neweracode/cdk-deletion-protection",
-  "version": "1.9.0",
+  "version": "1.9.1",
   "description": "An AWS CDK construct that protects infrastructure from deletion",
   "author": "Julia Jacobs <jjacobs2000@me.com>",
   "homepage": "https://github.com/NewEraCodeRepo/nec-cdk-components#readme",

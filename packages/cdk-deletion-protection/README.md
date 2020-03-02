@@ -9,7 +9,7 @@ An [AWS CDK](https://docs.aws.amazon.com/cdk/latest/guide/home.html) construct t
 ### Install
 
 ```shell
-$ npm i @NewEraCode/cdk-deletion-protection
+$ npm i @neweracode/cdk-deletion-protection
 ```
 ### Import
 

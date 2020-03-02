@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.9.1](https://github.com/NewEraCodeRepo/nec-cdk-components/compare/v1.9.0...v1.9.1) (2020-03-02)
+
+**Note:** Version bump only for package @neweracode/cdk-deletion-protection
+
+
+
+
+
 # 1.9.0 (2020-03-02)
 
 
