@@ -43,8 +43,7 @@ export interface ICdkCodepipelineGithubProps {
  *      action: 'describeSecret',
  *      parameters: {
  *         SecretId: 'TOKENS/PIPELINE/GithubToken' // ID of secret
- *      },
- *      physicalResourceId: Date.now().toString()
+ *      }
  *   }
  * });
  * // ARN is a property in the describeSecret SDK response

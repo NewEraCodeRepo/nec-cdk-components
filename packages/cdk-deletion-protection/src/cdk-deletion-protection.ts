@@ -70,7 +70,6 @@ export class CDKDeletionProtection extends Construct {
               EnableTerminationProtection: props.terminationProtection,
               StackName: stackName,
             },
-            physicalResourceId: Date.now().toString(), // Update physical id to always fetch the latest version
             service: 'CloudFormation',
           },
         });
